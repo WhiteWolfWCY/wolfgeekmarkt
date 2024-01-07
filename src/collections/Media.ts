@@ -7,7 +7,7 @@ const isAdminOrHasAccessToImages =
     const user = (req.user as User) || undefined;
 
     if (!user) return false;
-    if (user.role === "admin") return true;
+    if (user.role === 'admin') return true;
 
     return {
       user: {
@@ -39,7 +39,7 @@ export const Media: CollectionConfig = {
     update: isAdminOrHasAccessToImages(),
   },
   admin: {
-    hidden: ({ user }) => user.role !== "admin",
+    hidden: ({ user }) => user.role !== 'admin',
   },
   upload: {
     staticURL: "/media",
