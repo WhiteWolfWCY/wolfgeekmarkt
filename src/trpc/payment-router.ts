@@ -33,7 +33,7 @@ export const paymentRouter = router({
         collection: "orders",
         data: {
           _isPaid: false,
-          products: filteredProducts,
+          products: filteredProducts.map((prod) => prod.id),
           user: user.id,
         },
       });
@@ -57,16 +57,22 @@ export const paymentRouter = router({
 
       try {
         const stripeSession = await stripe.checkout.sessions.create({
-          success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/thank-you?orderId=${order.id}`,
-          cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/cart`,
-          payment_method_types: ["card", "paypal"],
-          mode: "payment",
-          metadata: {
-            userId: user.id,
-            orderId: order.id,
-          },
-          line_items,
-        });
+            success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/thank-you?orderId=${order.id}`,
+            cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/cart`,
+            payment_method_types: ["card", "paypal"],
+            mode: "payment",
+            metadata: {
+              userId: user.id,
+              orderId: order.id
+            },
+            line_items,
+            payment_intent_data: {
+              metadata: {
+                userId: user.id,
+                orderId: order.id
+              }
+            }
+          });
 
         return { url: stripeSession.url };
       } catch (err) {

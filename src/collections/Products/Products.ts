@@ -21,14 +21,17 @@ export const Products: CollectionConfig = {
       addUser,
       async (args) => {
         if (args.operation === "create") {
+          
           const data = args.data as Product;
-
-          const createdProduct = await stripe.products.create({
+          
+          const createdProduct = await stripe.products.create(  
+          {
             name: data.name,
             default_price_data: {
               currency: "USD",
               unit_amount: Math.round(data.price * 100),
             },
+            
           });
 
           const updated: Product = {
