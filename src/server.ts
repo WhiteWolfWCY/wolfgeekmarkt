@@ -44,7 +44,7 @@ const start = async () => {
   });
 
   if (process.env.NEXT_BUILD) {
-    app.listen(PORT, "0.0.0.0", async () => {
+    app.listen((process.env.PORT || PORT) as number, "0.0.0.0", async () => {
       payload.logger.info("Next.js is building for production.");
 
       // @ts-expect-error
