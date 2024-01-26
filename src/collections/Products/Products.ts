@@ -1,8 +1,10 @@
-import { stripe } from "../../lib/stripe";
 import { BeforeChangeHook } from "payload/dist/collections/config/types";
 import { PRODUCT_CATEGORIES } from "../../config";
 import { CollectionConfig } from "payload/types";
 import { Product } from "../../payload-types";
+import { getStripe } from "../../lib/stripe";
+
+const stripe = getStripe(process.env.NEXT_STRIPE_SECRET_KEY || "");
 
 const addUser: BeforeChangeHook<Product> = async ({ req, data }) => {
   const user = req.user;

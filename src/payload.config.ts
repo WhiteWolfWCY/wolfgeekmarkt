@@ -10,9 +10,7 @@ import { Products } from './collections/Products/Products';
 import { ProductFiles } from './collections/ProductFile';
 import { Orders } from './collections/Orders';
 
-dotenv.config({
-    path: path.resolve(__dirname, "../.env")
-})
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 export default buildConfig({
     serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "",
