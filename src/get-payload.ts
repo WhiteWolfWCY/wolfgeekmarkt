@@ -9,14 +9,15 @@ dotenv.config({
 });
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.resend.com",
-  secure: true,
   port: 465,
+  host: "smtp.gmail.com",
+  service: "gmail",
+
   auth: {
-    user: "resend",
-    pass: process.env.RESEND_API_KEY
-  }
-})
+    user: "wolfgeekmarkt@gmail.com",
+    pass: "ismaulhxdqgmsceq",
+  },
+});
 
 let cached = (global as any).payload;
 
@@ -44,8 +45,8 @@ export const getPayloadClient = async ({ initOptions }: Args = {}): Promise<Payl
     cached.promise = payload.init({
       email: {
         transport: transporter,
-        fromAddress: "onboarding@resend.dev",
-        fromName: "WolfGeekmarkt",
+        fromAddress: "wolfgeekmarkt@gmail.com",
+        fromName: "WolfGeekMarkt",
       },
       secret: process.env.PAYLOAD_SECRET,
       local: initOptions?.express ? false : true,

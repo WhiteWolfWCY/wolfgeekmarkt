@@ -6,6 +6,7 @@ import type Stripe from "stripe"
 import { Product } from "./payload-types";
 import {Resend} from "resend"
 import { ReceiptEmailHtml } from "./components/emails/ReceiptEmail";
+import nodemailer from 'nodemailer';
 
 
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -81,13 +82,24 @@ export const stripeWebhookHandler = async (
       },
     });
 
+    const transporter = nodemailer.createTransport({
+      port: 465,
+      host: "smtp.gmail.com",
+      service: "gmail",
+    
+      auth: {
+        user: "wolfgeekmarkt@gmail.com",
+        pass: "ismaulhxdqgmsceq",
+      },
+    });
     
     // send receipt
     try {
-      const data = await resend.emails.send({
-        from: "DigitalHippo <hello@joshtriedcoding.com>",
+      const data = await transporter.sendMail({
+        from: "WolfGeekMarkt <wolfgeekmarkt@gmail.com>",
         to: [user.email],
         subject: "Thanks for your order! This is your receipt.",
+        text: "",
         html: ReceiptEmailHtml({
           date: new Date(),
           email: user.email,
