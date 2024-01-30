@@ -32,7 +32,7 @@ export const EmailTemplate = ({
       <Body style={main}>
         <Container style={container}>
           <Img
-            src={`${process.env.NEXT_PUBLIC_SERVER_URL}/wolf-sent-email.png`}
+            src={`${process.env.NEXT_PUBLIC_SERVER_URL}/wolf-email-sent.png`}
             width="150"
             height="150"
             alt="WolfGeekMarkt"
