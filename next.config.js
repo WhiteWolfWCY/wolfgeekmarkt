@@ -2,17 +2,9 @@
 
 const nextConfig = {
   images: {
-    remotePatterns: [
-      {
-        hostname: "localhost",
-        pathname: "**",
-        protocol: "http",
-        port: "3000",
-      },
-      {
-        hostname: "wolfgeekmarkt-production.up.railway.app",
-        protocol: "https",
-      },
+    domains: [
+      'localhost',
+      'wolfgeekmarkt-production.up.railway.app'
     ],
   },
 };
