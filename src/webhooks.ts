@@ -89,7 +89,7 @@ export const stripeWebhookHandler = async (
     
       auth: {
         user: "wolfgeekmarkt@gmail.com",
-        pass: "ismaulhxdqgmsceq",
+        pass: process.env.MAILER_TRANSPORTER_KEY,
       },
     });
     
