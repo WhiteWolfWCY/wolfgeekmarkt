@@ -58,7 +58,7 @@ export function constructMetadata({
       creator: '@mateusz_mww',
     },
     icons,
-    metadataBase: new URL('https://wolfgeekmarkt-production.up.railway.app'),
+    metadataBase: new URL('https://wolfgeekmarkt.vercel.app'),
     ...(noIndex && {
       robots: {
         index: false,
