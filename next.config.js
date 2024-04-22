@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     domains: [
       'localhost',
-      'wolfgeekmarkt.vercel.app'
+      'wolfgeekmarkt-production.up.railway.app'
     ],
   },
 };

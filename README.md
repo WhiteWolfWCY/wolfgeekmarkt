@@ -7,5 +7,5 @@ NextJS, TypeScript, TailwindCSS, NodeJS, Express, TRPC, Shadcn
 
 
 ## Demo
-Check out my work here: wolfgeekmarkt.vercel.app
+Check out my work here: wolfgeekmarkt-production.up.railway.app
 
